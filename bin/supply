@@ -18,12 +18,15 @@ then
 else
     echo "-----> Downloading ${JMETER_ARCHIVE}"
     curl -fsSLO "${JMETER_URL}"
-    echo "-----> Untarring ${JMETER_ARCHIVE}"
-    tar -zxf "${JMETER_ARCHIVE}"
-    echo "-----> Moving ${JMETER_DIR} to cache dir"
-    mv "${JMETER_DIR}" "${CACHE_DIR}/${JMETER_DIR}"
+    # echo "-----> Untarring ${JMETER_ARCHIVE}"
+    # tar -zxf "${JMETER_ARCHIVE}"
+    echo "-----> Moving ${JMETER_ARCHIVE} to cache dir"
+    mv "${JMETER_ARCHIVE}" "${CACHE_DIR}/${JMETER_ARCHIVE}"
 fi
 
-# Copy JMeter from the cache dir to the build dir
-echo "-----> Copy ${JMETER_DIR} from the cache to the build dir: ${JMETER_BUILD_DIR}"
-cp -rT "${CACHE_DIR}/${JMETER_DIR}" "${BUILD_DIR}/${JMETER_BUILD_DIR}"
+# Copy JMeter archive from the cache dir to the build dir
+echo "-----> Copy ${JMETER_ARCHIVE} from the cache to the build dir: ${JMETER_BUILD_DIR}"
+cp -rT "${CACHE_DIR}/${JMETER_ARCHIVE}" "${BUILD_DIR}/${JMETER_BUILD_DIR}"
+
+# echo "-----> Untarring ${JMETER_ARCHIVE}"
+# tar -zxf "${JMETER_ARCHIVE}"
