@@ -42,5 +42,5 @@ else
 fi
 
 # Copy Java from the cache dir to the build dir
-echo "-----> Copy java ${JAVA_DIR} from the cache to the build dir: ${JAVA_BUILD_DIR}"
+echo "-----> Copy ${JAVA_DIR} from the cache to the build dir: ${JAVA_BUILD_DIR}"
 cp -rT "${CACHE_DIR}/${JAVA_DIR}" "${BUILD_DIR}/${JAVA_BUILD_DIR}"
