@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# detect disabled, must explicitly specify buildpack
+exit 1
