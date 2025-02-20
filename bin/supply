@@ -28,5 +28,5 @@ fi
 echo "-----> Copy ${JMETER_ARCHIVE} from the cache to the build dir: ${JMETER_BUILD_DIR}"
 cp "${CACHE_DIR}/${JMETER_ARCHIVE}" "${BUILD_DIR}/${JMETER_ARCHIVE}"
 
-# echo "-----> Untarring ${JMETER_ARCHIVE}"
-# tar -zxf "${JMETER_ARCHIVE}"
+echo "-----> Untarring ${JMETER_ARCHIVE}"
+tar -zxf "${JMETER_ARCHIVE}"
