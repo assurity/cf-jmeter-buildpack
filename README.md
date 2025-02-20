@@ -10,6 +10,16 @@ All JMeter files are available under `/home/vcap/app/jmeter`.
 
 All Java files are available under `/home/vcap/app/java`.
 
+This buildpack is not a 'final' buildpack, and so it will not work by itself. It is recommended to use this with the binary_buildpack to deploy arbitrary containers (CF apps) with JMeter on them. For example, your manifest may look like this: 
+
+```yaml
+---
+buildpacks:
+    - https://github.com/assurity/cf-k6-buildpack
+    - binary_buildpack
+---
+```
+
 # How to get it working? 
 
 ## Java
