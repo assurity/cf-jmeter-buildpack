@@ -27,3 +27,20 @@ fi
 # Copy JMeter from the cache dir to the build dir
 echo "-----> Copy ${JMETER_DIR} from the cache to the build dir: ${JMETER_BUILD_DIR}"
 cp -rT "${CACHE_DIR}/${JMETER_DIR}" "${BUILD_DIR}/${JMETER_BUILD_DIR}"
+
+# Check if Java exists in the cache dir
+if [ -d "${CACHE_DIR}/${JAVA_DIR}" ]
+then
+    echo "-----> Using java from cache"
+else
+    echo "-----> Downloading ${JAVA_ARCHIVE}"
+    curl -fsSLO "${JAVA_URL}"
+    echo "-----> Untarring ${JAVA_ARCHIVE}"
+    tar -zxf "${JAVA_ARCHIVE}"
+    echo "-----> Moving ${JAVA_DIR} to cache dir"
+    mv "${JAVA_DIR}" "${CACHE_DIR}/${JAVA_DIR}"
+fi
+
+# Copy Java from the cache dir to the build dir
+echo "-----> Copy java from the cache to the build dir: ${JAVA_BUILD_DIR}"
+cp -rT "${CACHE_DIR}/${JAVA_DIR}" "${BUILD_DIR}/${JAVA_BUILD_DIR}"
