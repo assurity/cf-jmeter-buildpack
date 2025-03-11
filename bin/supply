@@ -63,6 +63,10 @@ else
     unzip -q "${AWS_CLI_ARCHIVE}"
     echo "-----> Moving ${AWS_CLI_DIR} to cache dir"
     mv "${AWS_CLI_DIR}" "${CACHE_DIR}/${AWS_CLI_DIR}"
+
+    # Install AWS CLI
+    ./aws/install -i /tmp/aws-cli -b /tmp/bin
+    /tmp/bin/aws --version
 fi
 
 # Copy aws cli from the cache dir to the build dir
