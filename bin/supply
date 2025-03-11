@@ -59,9 +59,8 @@ then
 else
     echo "-----> Downloading ${AWS_CLI_ARCHIVE}"
     curl -fsSL "${AWS_CLI_URL}" -o "${AWS_CLI_ARCHIVE}"
-    ls
     echo "-----> Unzipping ${AWS_CLI_ARCHIVE}"
-    unzip "${AWS_CLI_ARCHIVE}"
+    unzip -q "${AWS_CLI_ARCHIVE}"
     echo "-----> Moving ${AWS_CLI_DIR} to cache dir"
     mv "${AWS_CLI_DIR}" "${CACHE_DIR}/${AWS_CLI_DIR}"
 fi
