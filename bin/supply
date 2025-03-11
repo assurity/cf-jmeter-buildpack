@@ -32,6 +32,7 @@ fi
 echo "-----> Copy ${JMETER_DIR} from the cache to the build dir: ${JMETER_BUILD_DIR}"
 cp -rT "${CACHE_DIR}/${JMETER_DIR}" "${BUILD_DIR}/${JMETER_BUILD_DIR}"
 
+
 # Check if Java exists in the cache dir
 if [ -d "${CACHE_DIR}/${JAVA_DIR}" ]
 then
@@ -48,3 +49,22 @@ fi
 # Copy Java from the cache dir to the build dir
 echo "-----> Copy ${JAVA_DIR} from the cache to the build dir: ${JAVA_BUILD_DIR}"
 cp -rT "${CACHE_DIR}/${JAVA_DIR}" "${BUILD_DIR}/${JAVA_BUILD_DIR}"
+
+
+# AWS CLI setup 
+# Check if aws cli exists in the cache dir
+if [ -d "${CACHE_DIR}/${AWS_CLI_DIR}" ]
+then
+    echo "-----> Using aws cli from cache"
+else
+    echo "-----> Downloading ${AWS_CLI_ARCHIVE}"
+    curl -fsSLO "${AWS_CLI_URL}" -o "${AWS_CLI_ARCHIVE}"
+    echo "-----> Unzipping ${AWS_CLI_ARCHIVE}"
+    unzip "${AWS_CLI_ARCHIVE}"
+    echo "-----> Moving ${AWS_CLI_DIR} to cache dir"
+    mv "${AWS_CLI_DIR}" "${CACHE_DIR}/${AWS_CLI_DIR}"
+fi
+
+# Copy aws cli from the cache dir to the build dir
+echo "-----> Copy ${AWS_CLI_DIR} from the cache to the build dir: ${AWS_CLI_BUILD_DIR}"
+cp -rT "${CACHE_DIR}/${AWS_CLI_DIR}" "${BUILD_DIR}/${AWS_CLI_BUILD_DIR}"

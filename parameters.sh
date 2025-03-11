@@ -17,3 +17,11 @@ JAVA_URL=https://download.bell-sw.com/java/${JAVA_VERSION}/${JAVA_ARCHIVE}
 JAVA_DIR=jre8u442-full
 # The name of the java dir in he actual build of the app
 JAVA_BUILD_DIR=java
+
+# AWS CLI setup
+# Instructions on how to install at: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+AWS_CLI_ARCHIVE=awscliv2.zip
+AWS_CLI_URL=https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+AWS_CLI_DIR=aws
+# The name of the aws dir in the actual build of the app
+AWS_CLI_BUILD_DIR=aws
