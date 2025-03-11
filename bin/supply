@@ -58,7 +58,7 @@ then
     echo "-----> Using aws cli from cache"
 else
     echo "-----> Downloading ${AWS_CLI_ARCHIVE}"
-    curl -fsSLO "${AWS_CLI_URL}" -o "${AWS_CLI_ARCHIVE}"
+    curl -fsSL "${AWS_CLI_URL}" -o "${AWS_CLI_ARCHIVE}"
     ls
     echo "-----> Unzipping ${AWS_CLI_ARCHIVE}"
     unzip "${AWS_CLI_ARCHIVE}"
