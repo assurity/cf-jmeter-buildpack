@@ -4,11 +4,17 @@ Buildpack to install JMeter to a Cloud Foundry app
 
 # What does this buildpack do?
 
-Downloads the version of JMeter and Java specified in `parameters.sh`.
+Downloads the following. Details for these are in `parameters.sh`. 
+  
+- JMeter
+- Java
+- AWS CLI
 
-All JMeter files are available under `/home/vcap/app/jmeter`.
+Files are then available under:
 
-All Java files are available under `/home/vcap/app/java`.
+- All JMeter files are available under `/home/vcap/app/jmeter`.
+- All Java files are available under `/home/vcap/app/java`.
+- All AWS CLI files are available under `/home/vcap/app/aws-cli`.
 
 This buildpack is not a 'final' buildpack, and so it will not work by itself. It is recommended to use this with the binary_buildpack to deploy arbitrary containers (CF apps) with JMeter on them. For example, your manifest may look like this: 
 
