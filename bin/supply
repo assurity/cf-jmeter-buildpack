@@ -70,13 +70,13 @@ pushd ${CACHE_DIR}
 
 echo "-----> Getting version of aws-cli"
 
-ls
+# ls
 
-ls ${AWS_CLI_BUILD_DIR}
+# ls ${AWS_CLI_BUILD_DIR}
 
 ls ${AWS_CLI_BUILD_DIR}/bin
 
-./${AWS_CLI_BUILD_DIR}/bin/aws --version
+/${AWS_CLI_BUILD_DIR}/bin/aws --version
 
 AWS_CLI_VERSION=$(${AWS_CLI_BUILD_DIR}/bin/aws --version | awk '{print $1}' | cut -d'/' -f2)
 
