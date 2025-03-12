@@ -69,9 +69,7 @@ pushd ${CACHE_DIR}
 
 ls -a
 
-./aws/install -i app/aws-cli -b app/aws-cli/bin
-
-ln -s /app/aws-cli/v2/current/bin/aws /tmp/app/matt-aws
+./aws/install -i /app/aws-cli -b /app/aws-cli/bin
 
 # Copy AWS CLI from the cache dir to the build dir
 echo "-----> Copy ${AWS_CLI_DIR} from the cache to the build dir: ${AWS_CLI_BUILD_DIR}"
