@@ -71,25 +71,6 @@ ls -a
 
 ./aws/install -i ${BUILD_DIR}/aws-cli -b ${BUILD_DIR}/aws-cli/bin
 
+ln -s /app/aws-cli/v2/current/bin/aws /tmp/app/matt-aws
+
 popd
-
-# Copy aws cli from the cache dir to the build dir
-echo "-----> Copy ${AWS_CLI_DIR} from the cache to the build dir: ${AWS_CLI_BUILD_DIR}"
-cp -rT "${CACHE_DIR}/${AWS_CLI_DIR}" "${BUILD_DIR}/${AWS_CLI_BUILD_DIR}"
-
-
-
-
-# pushd ${CACHE_DIR}
-
-# # Install AWS CLI
-# ./aws/install -i /tmp/aws-cli -b /tmp/bin
-# /tmp/bin/aws --version
-
-# # temp
-# ls -a
-
-# # temp
-# export PATH=/tmp/bin:$PATH
-
-# popd
