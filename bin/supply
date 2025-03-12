@@ -66,16 +66,15 @@ fi
 # Enter the cache dir and install the aws cli to the build dir
 pushd ${CACHE_DIR}
 
+echo "-----> Running ./aws/install"
 ./aws/install -i /tmp/${AWS_CLI_BUILD_DIR} -b /tmp/${AWS_CLI_BUILD_DIR}/bin
 
 echo "-----> Getting version of aws-cli"
-
 /tmp/${AWS_CLI_BUILD_DIR}/bin/aws --version
-
 AWS_CLI_VERSION=$(/tmp/${AWS_CLI_BUILD_DIR}/bin/aws --version | awk '{print $1}' | cut -d'/' -f2)
 
 # Copy aws cli from the cache dir to the build dir
 echo "-----> Copy /tmp/${AWS_CLI_BUILD_DIR} from the cache to the build dir: ${AWS_CLI_BUILD_DIR}"
-cp -rT "/tmp/${AWS_CLI_BUILD_DIR}v2/${AWS_CLI_VERSION}" "${BUILD_DIR}/${AWS_CLI_BUILD_DIR}"
+cp -rT "/tmp/${AWS_CLI_BUILD_DIR}/v2/${AWS_CLI_VERSION}" "${BUILD_DIR}/${AWS_CLI_BUILD_DIR}"
 
 popd
