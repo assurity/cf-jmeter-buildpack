@@ -76,6 +76,8 @@ echo "-----> Getting version of aws-cli"
 
 ls ${AWS_CLI_BUILD_DIR}/bin
 
+/aws-cli/bin/aws --version
+
 /${AWS_CLI_BUILD_DIR}/bin/aws --version
 
 AWS_CLI_VERSION=$(${AWS_CLI_BUILD_DIR}/bin/aws --version | awk '{print $1}' | cut -d'/' -f2)
