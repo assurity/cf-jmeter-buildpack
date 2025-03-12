@@ -76,9 +76,9 @@ AWS_CLI_VERSION=$(/tmp/${AWS_CLI_BUILD_DIR}/bin/aws --version | awk '{print $1}'
 # Configure the AWS CLI to use the S3 credentials from VCAP_SERVICES.
 # Assumes the app you are deploying is bound to an S3 service instance.
 echo "-----> Set S3 service instance credentials"
-AWS_ACCESS_KEY_ID="$(echo $VCAP_SERVICES | jq -r '.[csb-aws-s3-bucket][0].credentials.access_key_id')"
-AWS_SECRET_ACCESS_KEY="$(echo $VCAP_SERVICES | jq -r '.[csb-aws-s3-bucket][0].credentials.secret_access_key')"
-AWS_DEFAULT_REGION="$(echo $VCAP_SERVICES | jq -r '.[csb-aws-s3-bucket][0].credentials.region')"
+AWS_ACCESS_KEY_ID="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].credentials.access_key_id')"
+AWS_SECRET_ACCESS_KEY="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].credentials.secret_access_key')"
+AWS_DEFAULT_REGION="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].credentials.region')"
 
 # Export AWS creds
 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
