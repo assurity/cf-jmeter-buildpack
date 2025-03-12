@@ -1,0 +1,2 @@
+# Set up the AWS CLI path for runtime
+export PATH="$BUILD_DIR/.aws-cli/bin:$PATH"
