@@ -69,7 +69,7 @@ pushd ${CACHE_DIR}
 
 ls -a
 
-./aws/install -i /aws-cli -b /bin
+./aws/install -i ${BUILD_DIR}/aws-cli -b ${BUILD_DIR}/aws-cli/bin
 
 popd
 
