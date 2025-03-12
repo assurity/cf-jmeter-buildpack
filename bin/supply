@@ -65,9 +65,13 @@ else
     mv "${AWS_CLI_DIR}" "${CACHE_DIR}/${AWS_CLI_DIR}"
 fi
 
+pushd ${CACHE_DIR}
+
 # Install AWS CLI
-.${CACHE_DIR}/aws/install -i /tmp/aws-cli -b /tmp/bin
+./aws/install -i /tmp/aws-cli -b /tmp/bin
 /tmp/bin/aws --version
+
+popd
 
 # Copy aws cli from the cache dir to the build dir
 echo "-----> Copy ${AWS_CLI_DIR} from the cache to the build dir: ${AWS_CLI_BUILD_DIR}"
