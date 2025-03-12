@@ -8,13 +8,10 @@ CACHE_DIR="${2}"
 DEPS_DIR="${3}"
 DEPS_IDX="${4}"
 
-# Attempting to read VCAP_SERVICES
-echo $VCAP_SERVICES
-
-
 BUILDPACK_DIR=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 source ${BUILDPACK_DIR}/parameters.sh
 
+# JMeter setup
 # Check if JMeter exists in the cache dir
 if [ -d "${CACHE_DIR}/${JMETER_DIR}" ]
 then
@@ -33,6 +30,7 @@ echo "-----> Copy ${JMETER_DIR} from the cache to the build dir: ${JMETER_BUILD_
 cp -rT "${CACHE_DIR}/${JMETER_DIR}" "${BUILD_DIR}/${JMETER_BUILD_DIR}"
 
 
+# Java setup
 # Check if Java exists in the cache dir
 if [ -d "${CACHE_DIR}/${JAVA_DIR}" ]
 then
@@ -57,31 +55,25 @@ if [ -d "${CACHE_DIR}/${AWS_CLI_DIR}" ]
 then
     echo "-----> Using aws cli from cache"
 else
-    echo "-----> Downloading ${AWS_CLI_ARCHIVE}"
+    echo "-----> Downloading ${AWS_CLI_URL} to ${AWS_CLI_ARCHIVE}"
     curl -fsSL "${AWS_CLI_URL}" -o "${AWS_CLI_ARCHIVE}"
     echo "-----> Unzipping ${AWS_CLI_ARCHIVE}"
-    unzip -q "${AWS_CLI_ARCHIVE}"
+    unzip -oq "${AWS_CLI_ARCHIVE}"
     echo "-----> Moving ${AWS_CLI_DIR} to cache dir"
     mv "${AWS_CLI_DIR}" "${CACHE_DIR}/${AWS_CLI_DIR}"
 fi
 
+# Enter the cache dir and install the aws cli to the build dir
 pushd ${CACHE_DIR}
 
-ls -a
+./aws/install -i ${AWS_CLI_BUILD_DIR} -b ${AWS_CLI_BUILD_DIR}/bin
 
-./aws/install -i /tmp/aws-cli -b /tmp/aws-cli/bin
-/tmp/aws-cli/bin/aws --version
-
-# Get the aws cli version
+echo "-----> Getting version of aws-cli"
+${AWS_CLI_BUILD_DIR}/bin/aws --version
 AWS_CLI_VERSION=$(/tmp/aws-cli/bin/aws --version | awk '{print $1}' | cut -d'/' -f2)
 
-# Move the aws binary to the build dir
-echo "-----> Copy ${AWS_CLI_DIR} from the cache to the build dir: ${AWS_CLI_BUILD_DIR}"
-# mkdir -p "${BUILD_DIR}/aws-cli/bin/"
-cp -rT "/tmp/aws-cli/v2/${AWS_CLI_VERSION}" "${BUILD_DIR}/aws-cli"
-
-# Copy AWS CLI from the cache dir to the build dir
-# echo "-----> Copy ${AWS_CLI_DIR} from the cache to the build dir: ${AWS_CLI_BUILD_DIR}"
-# cp -rT "${CACHE_DIR}/app/aws-cli" "${BUILD_DIR}/aws-cli"
+# Copy aws cli from the cache dir to the build dir
+echo "-----> Copy ${AWS_CLI_BUILD_DIR} from the cache to the build dir: ${AWS_CLI_BUILD_DIR}"
+cp -rT "${AWS_CLI_BUILD_DIR}v2/${AWS_CLI_VERSION}" "${BUILD_DIR}/${AWS_CLI_BUILD_DIR}"
 
 popd

@@ -23,5 +23,5 @@ JAVA_BUILD_DIR=java
 AWS_CLI_ARCHIVE=awscliv2.zip
 AWS_CLI_URL=https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
 AWS_CLI_DIR=aws
-# The name of the aws dir in the actual build of the app
-AWS_CLI_BUILD_DIR=aws
+# The name of the aws cli dir in the actual build of the app
+AWS_CLI_BUILD_DIR=aws-cli
