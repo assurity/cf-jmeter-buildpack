@@ -78,7 +78,7 @@ AWS_CLI_VERSION=$(/tmp/aws-cli/bin/aws --version | awk '{print $1}' | cut -d'/' 
 # Move the aws binary to the build dir
 echo "-----> Copy ${AWS_CLI_DIR} from the cache to the build dir: ${AWS_CLI_BUILD_DIR}"
 # mkdir -p "${BUILD_DIR}/aws-cli/bin/"
-cp -rT "/tmp/aws-cli/v2/${AWS_CLI_VERSION}/bin" "${BUILD_DIR}/aws-cli/bin"
+cp -rT "/tmp/aws-cli/v2/${AWS_CLI_VERSION}" "${BUILD_DIR}/aws-cli"
 
 # Copy AWS CLI from the cache dir to the build dir
 # echo "-----> Copy ${AWS_CLI_DIR} from the cache to the build dir: ${AWS_CLI_BUILD_DIR}"
