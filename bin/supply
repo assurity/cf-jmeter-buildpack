@@ -73,6 +73,8 @@ pushd ${BUILD_DIR}
 
 ls -a
 
+./aws/install -i /aws-cli -b /bin
+
 popd
 
 
