@@ -72,6 +72,13 @@ ls -a
 ./aws/install -i /tmp/aws-cli -b /tmp/aws-cli/bin
 /tmp/aws-cli/bin/aws --version
 
+# Get the aws cli version
+AWS_CLI_VERSION=$(aws --version | awk '{print $1}' | cut -d'/' -f2)
+
+# Move the aws binary to the build dir
+echo "-----> Copy ${AWS_CLI_DIR} from the cache to the build dir: ${AWS_CLI_BUILD_DIR}"
+cp -rT "/tmp/aws-cli/v2/${AWS_CLI_VERSION}/bin/" "${BUILD_DIR}/aws-cli/bin/"
+
 # Copy AWS CLI from the cache dir to the build dir
 # echo "-----> Copy ${AWS_CLI_DIR} from the cache to the build dir: ${AWS_CLI_BUILD_DIR}"
 # cp -rT "${CACHE_DIR}/app/aws-cli" "${BUILD_DIR}/aws-cli"
