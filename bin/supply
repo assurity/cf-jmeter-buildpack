@@ -81,7 +81,5 @@ popd
 
 # Copy the utils directory to the build dir
 echo "-----> Copying the utils directory of the buildpack to the build dir"
-
-ls
-
 cp -rT "${BUILDPACK_DIR}/utils" "${BUILD_DIR}/jmeter_buildpack_utils"
+chmod +x ${BUILD_DIR}/jmeter_buildpack_utils/*
