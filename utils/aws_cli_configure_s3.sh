@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Check if VCAP_SERVICES is available
-if [ -z "${VCAP_SERVICES}"]; then
+if [ -z "${VCAP_SERVICES}" ]; then
     echo "VCAP_SERVICES is not set, likely this app is not bound to any services"
     exit 1
 else 
@@ -9,11 +9,11 @@ else
 fi
 
 # Check if the app is bound to an S3 service instance
-if [ -z "${VCAP_SERVICES}" | jq 'has("csb-aws-s3-bucket")']; then
+if [ -z "${VCAP_SERVICES}" | jq 'has("csb-aws-s3-bucket")' ]; then
     echo "VCAP_SERVICES does not contain a 'csb-aws-s3-bucket' object. Is this app bound to an S3 service instance?"
     exit 1
 else
-    SERVICE_NAME="$(echo $VCAP_SERVICES | jq -r '.[csb-aws-s3-bucket][0].name')" 
+    SERVICE_NAME="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].name')" 
     echo "VCAP_SERVICES contains a 'csb-aws-s3-bucket' object. Name of the service is: ${SERVICE_NAME}"
 fi
 
