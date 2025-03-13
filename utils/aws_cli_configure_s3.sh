@@ -14,7 +14,7 @@ if ! echo "${VCAP_SERVICES}" | jq 'has("csb-aws-s3-bucket")' > /dev/null; then
     exit 1
 else
     SERVICE_NAME="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].name')" 
-    echo "VCAP_SERVICES contains a 'csb-aws-s3-bucket' object. Name of the service is: ${SERVICE_NAME}"
+    echo "VCAP_SERVICES contains a 'csb-aws-s3-bucket' object. Name of the service is: '${SERVICE_NAME}'"
 fi
 
 # Configure the AWS CLI to use the S3 credentials from VCAP_SERVICES.
