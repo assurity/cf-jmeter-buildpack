@@ -27,4 +27,4 @@ AWS_DEFAULT_REGION="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].cre
 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
-./app/aws-cli/bin/aws configure list
+/app/aws-cli/bin/aws configure list
