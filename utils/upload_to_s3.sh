@@ -15,4 +15,4 @@ dir_to_upload=$1
 # Getting bucket name from VCAP_SERVICES
 BUCKET_NAME="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].credentials.bucket_name')"
 
-/app/aws-cli/aws s3 sync $1 s3://$BUCKET_NAME/
+/app/aws-cli/bin/aws s3 sync $1 s3://$BUCKET_NAME/
