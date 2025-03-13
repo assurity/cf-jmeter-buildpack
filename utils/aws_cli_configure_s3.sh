@@ -9,7 +9,7 @@ else
 fi
 
 # Check if the app is bound to an S3 service instance
-if [ -z "${VCAP_SERVICES}" | jq 'has("csb-aws-s3-bucket")']
+if [ -z "${VCAP_SERVICES}" | jq 'has("csb-aws-s3-bucket")']; then
     echo "VCAP_SERVICES does not contain a 'csb-aws-s3-bucket' object. Is this app bound to an S3 service instance?"
     exit 1
 else

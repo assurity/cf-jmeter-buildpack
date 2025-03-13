@@ -11,6 +11,7 @@ DEPS_IDX="${4}"
 BUILDPACK_DIR=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 source ${BUILDPACK_DIR}/parameters.sh
 
+
 # JMeter setup
 # Check if JMeter exists in the cache dir
 if [ -d "${CACHE_DIR}/${JMETER_DIR}" ]
@@ -79,6 +80,8 @@ cp -rT "/tmp/${AWS_CLI_BUILD_DIR}/v2/${AWS_CLI_VERSION}" "${BUILD_DIR}/${AWS_CLI
 
 popd
 
+
+# Utils setup
 # Copy the utils directory to the build dir
 echo "-----> Copying the utils directory of the buildpack to the build dir"
 cp -rT "${BUILDPACK_DIR}/utils" "${BUILD_DIR}/jmeter_buildpack_utils"
