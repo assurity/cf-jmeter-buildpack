@@ -67,7 +67,7 @@ fi
 pushd ${CACHE_DIR}
 
 echo "-----> Running ./aws/install"
-./aws/install -i /tmp/${AWS_CLI_BUILD_DIR} -b /tmp/${AWS_CLI_BUILD_DIR}/bin
+./${AWS_CLI_DIR}/install -i /tmp/${AWS_CLI_BUILD_DIR} -b /tmp/${AWS_CLI_BUILD_DIR}/bin
 
 echo "-----> Getting version of aws-cli"
 /tmp/${AWS_CLI_BUILD_DIR}/bin/aws --version
@@ -79,3 +79,6 @@ cp -rT "/tmp/${AWS_CLI_BUILD_DIR}/v2/${AWS_CLI_VERSION}" "${BUILD_DIR}/${AWS_CLI
 
 popd
 
+# Copy the utils directory to the build dir
+echo "-----> Copying the utils directory of the buildpack to the build dir"
+cp -rT "utils" "${BUILD_DIR}/jmeter_buildpack_utils"
