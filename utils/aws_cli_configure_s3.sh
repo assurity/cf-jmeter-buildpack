@@ -18,7 +18,7 @@ else
 fi
 
 # Configure the AWS CLI to use the S3 credentials from VCAP_SERVICES.
-echo "-----> Set S3 service instance credentials"
+echo "-----> Running 'aws configure list' to set S3 service instance credentials"
 AWS_ACCESS_KEY_ID="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].credentials.access_key_id')"
 AWS_SECRET_ACCESS_KEY="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].credentials.secret_access_key')"
 AWS_DEFAULT_REGION="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].credentials.region')"
@@ -27,4 +27,4 @@ AWS_DEFAULT_REGION="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].cre
 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY_ID=$AWS_SECRET_ACCESS_KEY
 export AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
-aws configure list
+./app/aws-cli/bin/aws configure list
