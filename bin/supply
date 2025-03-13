@@ -84,4 +84,4 @@ echo "-----> Copying the utils directory of the buildpack to the build dir"
 
 ls
 
-cp -rT "utils" "${BUILD_DIR}/jmeter_buildpack_utils"
+cp -rT "${BUILDPACK_DIR}/utils" "${BUILD_DIR}/jmeter_buildpack_utils"
