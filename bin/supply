@@ -70,6 +70,9 @@ pushd ${CACHE_DIR}
 echo "-----> Running ./aws/install"
 ./${AWS_CLI_DIR}/install -i /tmp/${AWS_CLI_BUILD_DIR} -b /tmp/${AWS_CLI_BUILD_DIR}/bin
 
+# List all files in the aws cli install dir
+ls -la /tmp/${AWS_CLI_BUILD_DIR}
+
 echo "-----> Getting version of aws-cli"
 /tmp/${AWS_CLI_BUILD_DIR}/bin/aws --version
 AWS_CLI_VERSION=$(/tmp/${AWS_CLI_BUILD_DIR}/bin/aws --version | awk '{print $1}' | cut -d'/' -f2)
