@@ -14,4 +14,4 @@ file_to_upload=$1
 
 BUCKET_NAME="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].credentials.bucket_name')"
 
-/app/aws-cli/bin/aws s3 sync $file_to_upload s3://$BUCKET_NAME/
+/app/aws-cli/bin/aws s3 cp $file_to_upload s3://$BUCKET_NAME/
