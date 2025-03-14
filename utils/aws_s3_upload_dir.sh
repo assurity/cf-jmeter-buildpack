@@ -5,7 +5,7 @@
 
 # Upload file to S3
 if [ -z "$1" ]; then
-    echo "Error: No argument provided!"
+    echo "Error: No dir provided!"
     exit 1
 fi
 
@@ -14,4 +14,4 @@ dir_to_upload=$1
 
 BUCKET_NAME="$(echo $VCAP_SERVICES | jq -r '.["csb-aws-s3-bucket"][0].credentials.bucket_name')"
 
-/app/aws-cli/bin/aws s3 sync $dir_to_upload s3://$BUCKET_NAME/
+/app/aws-cli/bin/aws s3 cp --recursive $dir_to_upload s3://$BUCKET_NAME/$dir_to_upload
