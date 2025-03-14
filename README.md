@@ -61,6 +61,14 @@ When using a custom start command, the working directory is set to the `/app/` d
 
 When SSHing, the working directory is set to the `/home/` directory, therefore you can execute JMeter by running `./app/jmeter/bin/jmeter.sh`.
 
+# Utils
+
+The `/utils/` folder contains some additional utilities. All the files under here get installed to the app under the `/home/vcap/app/jmeter_buildpack_utils/` folder.
+
+- `aws_configure_s3_creds.sh` - this checks if the app is bound to an S3 service instance, and if it is then it will configure the S3 service instance access keys for use in aws cli commands.
+- `aws_s3_upload_file.sh` - example script showing file upload to S3 with the aws cli.
+- `aws_s3_upload_dir.sh` - example script showing directory upload to S3 with the aws cli. 
+
 # License
 
 MIT License
