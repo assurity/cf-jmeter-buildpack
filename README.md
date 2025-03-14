@@ -4,11 +4,17 @@ Buildpack to install JMeter to a Cloud Foundry app
 
 # What does this buildpack do?
 
-Downloads the version of JMeter and Java specified in `parameters.sh`.
+Downloads the following. Details for these are in `parameters.sh`. 
+  
+- JMeter
+- Java
+- AWS CLI
 
-All JMeter files are available under `/home/vcap/app/jmeter`.
+Files are then available under:
 
-All Java files are available under `/home/vcap/app/java`.
+- All JMeter files are available under `/home/vcap/app/jmeter`.
+- All Java files are available under `/home/vcap/app/java`.
+- All AWS CLI files are available under `/home/vcap/app/aws-cli`.
 
 This buildpack is not a 'final' buildpack, and so it will not work by itself. It is recommended to use this with the binary_buildpack to deploy arbitrary containers (CF apps) with JMeter on them. For example, your manifest may look like this: 
 
@@ -54,6 +60,14 @@ Once you have set JAVA_HOME, you will be able to run JMeter.
 When using a custom start command, the working directory is set to the `/app/` directory, therefore you can execute JMeter by running `./jmeter/bin/jmeter.sh`.
 
 When SSHing, the working directory is set to the `/home/` directory, therefore you can execute JMeter by running `./app/jmeter/bin/jmeter.sh`.
+
+# Utils
+
+The `/utils/` folder contains some additional utilities. All the files under here get installed to the app under the `/home/vcap/app/jmeter_buildpack_utils/` folder.
+
+- `aws_configure_s3_creds.sh` - this checks if the app is bound to an S3 service instance, and if it is then it will configure the S3 service instance access keys for use in aws cli commands.
+- `aws_s3_upload_file.sh` - example script showing file upload to S3 with the aws cli.
+- `aws_s3_upload_dir.sh` - example script showing directory upload to S3 with the aws cli. 
 
 # License
 
