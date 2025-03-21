@@ -24,6 +24,14 @@ else
     tar -zxf "${JMETER_ARCHIVE}"
     echo "-----> Moving ${JMETER_DIR} to cache dir"
     mv "${JMETER_DIR}" "${CACHE_DIR}/${JMETER_DIR}"
+
+    # Install JMeter plugins
+    for PLUGIN in "${JMETER_PLUGINS}"; do
+        echo "-----> Downloading JMeter plugin: $PLUGIN"
+        curl -fsSLO "${JMETER_PLUGINS_BASE_URL}${PLUGIN}"
+        echo "-----> Unzipping ${PLUGIN}"
+        unzip -oq "${PLUGIN}" -d "${CACHE_DIR}/${JMETER_DIR}/lib/ext"
+    done
 fi
 
 # Copy JMeter from the cache dir to the build dir
