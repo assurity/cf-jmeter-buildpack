@@ -26,11 +26,11 @@ else
     mv "${JMETER_DIR}" "${CACHE_DIR}/${JMETER_DIR}"
 
     # Install JMeter plugins
-    for PLUGIN in "${JMETER_PLUGINS}"; do
+    for PLUGIN in "${JMETER_PLUGINS[@]}"; do
         echo "-----> Downloading JMeter plugin: $PLUGIN"
         curl -fsSLO "${JMETER_PLUGINS_BASE_URL}${PLUGIN}"
         echo "-----> Unzipping ${PLUGIN}"
-        unzip -oq "${PLUGIN}" -d "${CACHE_DIR}/${JMETER_DIR}/lib/ext"
+        unzip -oq "${PLUGIN}" -d "${CACHE_DIR}/${JMETER_DIR}"
     done
 fi
 
