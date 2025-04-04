@@ -7,6 +7,7 @@ Buildpack to install JMeter to a Cloud Foundry app
 Downloads the following. Details for these are in `parameters.sh`. 
   
 - JMeter
+- Selected JMeter Plugins
 - Java
 - AWS CLI
 
@@ -60,6 +61,17 @@ Once you have set JAVA_HOME, you will be able to run JMeter.
 When using a custom start command, the working directory is set to the `/app/` directory, therefore you can execute JMeter by running `./jmeter/bin/jmeter.sh`.
 
 When SSHing, the working directory is set to the `/home/` directory, therefore you can execute JMeter by running `./app/jmeter/bin/jmeter.sh`.
+
+# JMeter Plugins
+
+The following list of JMeter plugins get installed:
+
+- WebsocketSamplers v1.2.10 - https://jmeter-plugins.org/files/packages/websocket-samplers-1.2.10.zip
+- Custom Thread Groups v2.10 - https://jmeter-plugins.org/files/packages/jpgc-casutg-2.10.zip
+- Random CSV Data Set v0.8 - https://jmeter-plugins.org/files/packages/bzm-random-csv-0.8.zip
+- Dummy Sampler v0.4 - https://jmeter-plugins.org/files/packages/jpgc-dummy-0.4.zip
+- Parameterized Controller  Set Variables Action v0.4 - https://jmeter-plugins.org/files/packages/jpgc-prmctl-0.4.zip
+- Weighted Switch Controller v0.7 - https://jmeter-plugins.org/files/packages/jpgc-wsc-0.7.zip
 
 # Utils
 
