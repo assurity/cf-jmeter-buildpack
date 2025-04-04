@@ -26,10 +26,12 @@ else
     mv "${JMETER_DIR}" "${CACHE_DIR}/${JMETER_DIR}"
 
     # Install JMeter plugins
+    # Plugins jars must be copied to jmeter/lib/ext
     for PLUGIN in "${JMETER_PLUGINS[@]}"; do
         echo "-----> Downloading JMeter plugin: $PLUGIN"
         curl -fsSLO "${JMETER_PLUGINS_BASE_URL}${PLUGIN}"
         echo "-----> Unzipping ${PLUGIN}"
+        # The file structure of all the plugins .zips has /lib/ext so we don't need to specify these.
         unzip -oq "${PLUGIN}" -d "${CACHE_DIR}/${JMETER_DIR}"
     done
 fi

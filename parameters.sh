@@ -13,8 +13,6 @@ JMETER_BUILD_DIR=jmeter
 JMETER_PLUGINS_BASE_URL=https://jmeter-plugins.org/files/packages/
 JMETER_PLUGINS=("websocket-samplers-1.2.10.zip" "jpgc-casutg-2.10.zip" "bzm-random-csv-0.8.zip" "jpgc-dummy-0.4.zip" "jpgc-prmctl-0.4.zip" "jpgc-wsc-0.7.zip")
 
-
-
 # Variables from CSV File v0.1
 # https://jmeter-plugins.org/files/packages/jpgc-csvars-0.1.zip
 
